@@ -1,0 +1,17 @@
+<div class="mat-dialog-container">
+
+
+<h2 mat-dialog-title>Edit Day {{ data.dayOfTheMonth }}</h2>
+<mat-dialog-content>
+  <div *ngIf="!data?.work?.length" class="no-work">
+      No work has been added yet
+  </div>
+  <app-calendar-card *ngFor="let task of data?.work" [task]="task" [day]="data.dayOfTheMonth">
+
+  </app-calendar-card>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button  (click)="openDialog()">Add Time Entry</button>
+  <button mat-button  (click)="onNoClick()">Cancel</button>
+</mat-dialog-actions>
+</div>

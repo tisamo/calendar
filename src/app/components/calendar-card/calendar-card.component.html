@@ -1,0 +1,30 @@
+<mat-card class="cal-card">
+  <mat-card-header>
+    <div class="action-buttons">
+
+    </div>
+
+    <div class="header-content">
+      <mat-card-title>{{ task.title }}</mat-card-title>
+    </div>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>{{task.description}}</p>
+    <p><strong>Start Time:</strong> {{ task.startTime}}</p>
+    <p><strong>End Time:</strong> {{ task.endTime }}</p>
+    <span *ngIf="task.severity" class="severity">Severity: {{ task.severity }}</span>
+
+    <mat-chip-listbox *ngIf="task.tags?.length">
+      <mat-chip *ngFor="let tag of task.tags" color="primary">{{ tag }}</mat-chip>
+    </mat-chip-listbox>
+    <button mat-icon-button (click)="editTask()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="deleteTask(task.id!)">
+      <mat-icon>delete</mat-icon>
+    </button>
+
+  </mat-card-content>
+</mat-card>

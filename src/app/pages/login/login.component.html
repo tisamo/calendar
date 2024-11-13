@@ -1,0 +1,8 @@
+<div class="container">
+
+  <div class="login-container">
+    <input [(ngModel)]="username" placeholder="Your username">
+    <button mat-flat-button (click)="register()" [disabled]="!username.length">Login/Register</button>
+  </div>
+</div>
+

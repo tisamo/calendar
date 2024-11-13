@@ -1,0 +1,9 @@
+
+<div *ngIf="workDay">
+  <div class="task" (click)="openDialog()">
+        Tasks :{{workDay.work.length}}
+    <span class="date">
+       {{authService.selectedMonth}} {{workDay.dayOfTheMonth}}
+    </span>
+  </div>
+</div>

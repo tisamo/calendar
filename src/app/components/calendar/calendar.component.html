@@ -1,0 +1,16 @@
+<div class="calender-grid">
+  <div class="day">Sunday</div>
+  <div class="day">Monday</div>
+  <div class="day">Tuesday</div>
+  <div class="day">Wednesday</div>
+  <div class="day">Thursday</div>
+  <div class="day">Friday</div>
+  <div class="day">Saturday</div>
+  <ng-container *ngFor="let entry of calendarEntries">
+    <app-callendar-day [workDay]="entry">
+
+    </app-callendar-day>
+  </ng-container>
+</div>
+
+
