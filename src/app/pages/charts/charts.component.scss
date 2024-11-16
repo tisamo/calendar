@@ -1,0 +1,21 @@
+@import "breakpoints";
+.container{
+   margin-top: 100px;
+  text-align: center;
+  .charts{
+    margin-top:100px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    .chart{
+      @include smaller(md){
+        width: 90%;
+        margin: 0 auto;
+      }
+      h3{
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+}

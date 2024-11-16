@@ -1,0 +1,47 @@
+<div class="container">
+  <button mat-flat-button routerLink="/">Back to home</button>
+  <div class="charts" *ngIf="chartData">
+    <div class="chart">
+      <h3>Hours worked</h3>
+      <ngx-charts-bar-vertical
+        [results]="chartData.workDayLengths"
+        [scheme]="'vivid'"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="false"
+        [showXAxisLabel]="true"
+        [xAxisLabel]="currentMonth"
+        [showYAxisLabel]="true"
+        [yAxisLabel]="'Hours'">
+      </ngx-charts-bar-vertical>
+    </div>
+
+    <div class="chart">
+      <h3>Most Used Tags</h3>
+      <ngx-charts-bar-vertical
+        [results]="chartData.mostUsedTags"
+        [scheme]="'vivid'"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="false"
+        [showXAxisLabel]="true"
+        [xAxisLabel]="'Tags'"
+        [showYAxisLabel]="true"
+        [yAxisLabel]="'Frequency'">
+      </ngx-charts-bar-vertical>
+    </div>
+
+    <div class="chart">
+      <h3>Severities</h3>
+      <ngx-charts-number-card
+        [results]="chartData.mostUsedSeverity"
+        [scheme]="'vivid'"
+      >
+      </ngx-charts-number-card>
+    </div>
+
+  </div>
+
+</div>
+
+

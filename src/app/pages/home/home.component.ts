@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {MatButton} from '@angular/material/button';
 import {CalendarComponent} from '../../components/calendar/calendar.component';
 import {add, endOfMonth, format, getDay, isSameMonth, startOfMonth, startOfWeek} from 'date-fns';
-import {Router} from '@angular/router';
-import {CalendarEntry, Month, TimeEntry} from '../../inferfaces/user.interface';
+import {Router, RouterLink} from '@angular/router';
+import {CalendarEntry, Month, TimeEntry, User} from '../../inferfaces/user.interface';
 import {CalendarEditComponent} from '../../components/calendar-edit/calendar-edit.component';
 import {MatDialog} from '@angular/material/dialog';
 import {CalendarDayViewComponent} from '../../components/calendar-day-view/calendar-day-view.component';
@@ -16,7 +16,8 @@ import {SnackbarService} from '../../services/snackbar.service';
   imports: [
     MatButton,
     CalendarComponent,
-    CalendarEditComponent
+    CalendarEditComponent,
+    RouterLink
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -35,14 +36,21 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getDataFromUser();
     this.constructMonthView();
+    this.authService.users.subscribe(()=>{
+      if(!this.calendarEntries.length) return;
+      const minutes = this.calculateWorkingHoursForEntries(this.calendarEntries);
+      this.workHours = this.calendarEntries.length > 7 ? `You have worked ${Math.round(minutes / 60)} hours this month`
+      : `You have worked ${Math.round(minutes / 60)} hours this week`;
+    })
   }
 
   getDataFromUser() {
     const userData = this.authService.currentUser;
     if (userData) {
       const currentMonthName = format(new Date(), 'MMMM');
-      const monthData = userData.months.find(m => m.name === currentMonthName);
+      this.authService.selectedMonth = currentMonthName;
 
+      const monthData = userData.months.find(m => m.name === currentMonthName);
       if (!monthData) {
         const newMonth = {name: currentMonthName, days: []};
         userData.months.push(newMonth);

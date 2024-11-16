@@ -1,20 +1,25 @@
 @import "breakpoints";
-.controllers{
-  margin-top: 100px;
-  margin-inline: auto;
-  display: flex;
-  width: min-content;
-  column-gap: 40px;
-  button{
-    font-size: 25px;
-  }
-}
-.workHours{
-  font-weight: bold;
-  margin-left: auto;
+.container{
   text-align: center;
-  margin-block: 75px;
-  @include smaller(md){
-    margin-block: 40px;
+  .controllers{
+    margin-top: 100px;
+    margin-inline: auto;
+    display: flex;
+    width: min-content;
+    column-gap: 40px;
+    button{
+      font-size: 25px;
+    }
+  }
+
+  .workHours{
+    font-weight: bold;
+    margin-left: auto;
+    text-align: center;
+    margin-block: 75px;
+    @include smaller(md){
+      margin-block: 40px;
+    }
   }
 }
+

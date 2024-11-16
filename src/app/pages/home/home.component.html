@@ -1,21 +1,26 @@
-<div class="controllers">
-  <button mat-button
-          (click)="constructMonthView()">
-    Month
-  </button>
 
-  <button mat-button
-          (click)="getWeek()">
-    Week
-  </button>
+<div class="container">
+  <div class="controllers">
+    <button mat-button
+            (click)="constructMonthView()">
+      Month
+    </button>
 
-  <button mat-button
-          (click)="getToday()">
-    Today
-  </button>
+    <button mat-button
+            (click)="getWeek()">
+      Week
+    </button>
+
+    <button mat-button
+            (click)="getToday()">
+      Today
+    </button>
+  </div>
+
+  <div class="workHours">{{ workHours }}</div>
+  <button mat-flat-button routerLink="/charts">Charts</button>
+
+  <app-calendar [calendarEntries]="calendarEntries">
+  </app-calendar>
 </div>
 
-<div class="workHours">{{ workHours }}</div>
-
-<app-calendar [calendarEntries]="calendarEntries">
-</app-calendar>
