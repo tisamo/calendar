@@ -24,6 +24,7 @@
     "date-fns": "^4.1.0",
     "ngx-mat-timepicker": "^18.0.0",
     "rxjs": "~7.8.0",
+    "sass": "^1.81.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
